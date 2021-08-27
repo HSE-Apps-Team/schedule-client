@@ -8,6 +8,7 @@ import { Box, Text, useColorMode, CircularProgress, VStack, Stack, HStack, Title
 import { motion } from "framer-motion"
 
 import dayjs from 'dayjs'
+import { Typography } from '@material-ui/core'
 
 
 
@@ -41,6 +42,7 @@ const News = () => {
     return (
         
         <div initial="hidden" animate="visible" style={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: "100%", maxHeight: vh * .8, overflowY: "scroll", overflowX: 'hidden', padding: '20px 0px', margin: '20px 0px'}}>
+            <p style={{fontWeight: "bold", fontSize: '24px'}}>News</p>
             {!loading ?
                 newsCasts.slice(0,10).map((cast) => {
                     const date = dayjs(cast.date)

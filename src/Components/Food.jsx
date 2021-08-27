@@ -38,12 +38,13 @@ const Food = () => {
         !loading ?
         
             <div initial="hidden" animate="visible" style={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: "100%", maxHeight: vh * .8, overflowY: "scroll", overflowX: 'hidden', padding: '20px 0px', margin: '20px 0px'}}>
+                <p style={{fontWeight: "bold", fontSize: '24px'}}>Food</p>
                 {
                     Object.entries(rawLunchData)
                     .map( ([lunchLine]) => 
                         <MotionBox
                             whileHover={{x:10}}
-                            style={{flexShrink: 0, boxShadow: " 2px 2px 15px rgb(0,118,220,0.18) ", width: "80%",maxWidth: "700px", height: mobile ? '60px' : '80px',borderRadius: "10px", display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: vh * .02, padding: "24px"}}
+                            style={{flexShrink: 0, boxShadow: " 2px 2px 15px rgb(0,118,220,0.18) ", width: "80%",maxWidth: "500px", height: mobile ? '60px' : '80px',borderRadius: "10px", display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: vh * .02, padding: "24px"}}
                             onClick={() => {
                                 //setLunchData({...lunchData, Title: lunchLine})
                                 genLunchData(lunchLine)
@@ -51,14 +52,14 @@ const Food = () => {
                             }}
                             >
                                 <div>
-                                    <Text fontSize="2xl" level={mobile ? 4 : 3} style={{color: colorMode == "dark" ? "white" : "#333", marginBottom: '0px'}}>{lunchLine}</Text>
+                                    <Text fontSize="20px" level={mobile ? 4 : 3} style={{color: colorMode == "dark" ? "white" : "#333", marginBottom: '0px'}}>{lunchLine}</Text>
                                 </div>
 
                         </MotionBox>
                     )
                 }
 
-                <Drawer onClose={onClose} isOpen={isOpen} size={"lg"}>
+                <Drawer onClose={onClose} isOpen={isOpen} size={"md"}>
                     <DrawerOverlay />
                     <DrawerContent>
                         <DrawerCloseButton />
