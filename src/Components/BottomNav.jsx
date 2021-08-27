@@ -44,7 +44,7 @@ const BottomNav = (props) => {
             default: colorTheme.selectedBackground
           },
           primary:{
-              main: "#90CDF4"
+              main: colorMode === "dark" ? "#90CDF4" : "#3182CE"
           }, 
         },
       });

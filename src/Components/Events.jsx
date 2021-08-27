@@ -45,7 +45,7 @@ function Events() {
         palette: {
           type: colorMode,
           primary:{
-              main: "#90CDF4"
+              main: colorMode === "dark" ? "#90CDF4" : "#3182CE"
           }, 
         },
     });
