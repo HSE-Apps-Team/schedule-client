@@ -71,7 +71,7 @@ function Events() {
                 </Paper>
             </ThemeProvider>
             <br></br>
-            <p>Still under construction but enjoy this nice calendar for now!</p>
+            <p>Still under construction. Enjoy this nice calendar for now!</p>
         </div>
     )
 }
