@@ -110,7 +110,7 @@ const Schedule = (props) => {
                 })
             : 
             <div style={{ height:vh-250, display: "flex", flexDirection:"row", width: "100%", alignItems: 'center', justifyContent: 'center'}}>
-                <CircularProgress isIndeterminate size={mobile ? window.innerWidth * .5 : 150} thickness={2.5}/>
+                <CircularProgress isIndeterminate style={{width:"70px"}} thickness={2.5}/>
             </div>
             }
 
