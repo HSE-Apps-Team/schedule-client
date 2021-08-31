@@ -87,7 +87,7 @@ const Progress = ({genText, period, nextPeriod, settings, lunchStatus, currentTi
 
     return (
         <div style={{ height:vh-120, display: "flex", flexDirection:"row", width: "100%", alignItems: 'center', justifyContent: 'center'}}>
-            <CircularProgress trackColor="#f5f5f5" thickness={3.5} size={mobile ? window.innerWidth * .85 : 580} value={period ? genPercent() : 0} capIsRound={true} >
+            <CircularProgress trackColor="#f5f5f5" thickness={3.5} size={mobile ? window.innerWidth * .85 : 580} value={period ? genPercent() : 0} capIsRound={true} style={{marginTop: "-20px"}} >
                 <CircularProgressLabel fontSize={50}>
 
                     {period ? 

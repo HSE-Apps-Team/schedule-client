@@ -37,7 +37,7 @@ const Food = () => {
     return (
         !loading ?
         
-            <div initial="hidden" animate="visible" style={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: "100%", maxHeight: vh * .8, overflowY: "scroll", overflowX: 'hidden', padding: '20px 0px', margin: '20px 0px'}}>
+            <div initial="hidden" animate="visible" style={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: "100%", maxHeight: vh * .8, overflowY: "scroll", overflowX: 'hidden', padding: '20px 0px', marginBottom: "20px", marginTop: "-10px"}}>
                 <p style={{fontWeight: "bold", fontSize: '24px'}}>Food</p>
                 {
                     Object.entries(rawLunchData)

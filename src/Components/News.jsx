@@ -41,7 +41,7 @@ const News = () => {
     const vh = use100vh()
     return (
         
-        <div initial="hidden" animate="visible" style={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: "100%", maxHeight: vh * .8, overflowY: "scroll", overflowX: 'hidden', padding: '20px 0px', margin: '20px 0px'}}>
+        <div initial="hidden" animate="visible" style={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: "100%", maxHeight: vh * .8, overflowY: "scroll", overflowX: 'hidden', padding: '20px 0px', marginTop: '-10px'}}>
             <p style={{fontWeight: "bold", fontSize: '24px'}}>News</p>
             {!loading ?
                 newsCasts.slice(0,10).map((cast) => {

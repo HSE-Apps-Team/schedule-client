@@ -381,7 +381,7 @@ const Clock = ({fullView, setFullView}) => {
    
         :
         
-        status != "LOADING" ?
+        status !== "LOADING" ?
             <div style={{ height:vh-120, display: "flex", flexDirection:"row", width: "100%", alignItems: 'center', justifyContent: 'center'}}>
 
                 <div style={{marginTop: "0px",textAlign: 'center',color: 'white',position: 'absolute',top:'50%',left: '50%', zIndex: 2, transform: 'translate(-50%, -50%)'}}>

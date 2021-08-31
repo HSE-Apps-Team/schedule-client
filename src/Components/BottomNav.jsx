@@ -4,16 +4,7 @@ import useMedia from '../Hooks/useMedia'
 
 import { CalendarOutlined, ClockCircleOutlined, UnorderedListOutlined, PlayCircleOutlined} from '@ant-design/icons';
 import { theme, useColorMode, Text } from "@chakra-ui/react"
-import FastfoodOutlinedIcon from '@material-ui/icons/FastfoodOutlined'
-import ListOutlinedIcon from '@material-ui/icons/ListOutlined';
-import AccessTimeOutlinedIcon from '@material-ui/icons/AccessTimeOutlined';
-import PlayCircleOutlineOutlinedIcon from '@material-ui/icons/PlayCircleOutlineOutlined';
-import EventOutlinedIcon from '@material-ui/icons/EventOutlined';
-
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import { Paper, ThemeProvider } from '@material-ui/core';
-import { createTheme } from '@material-ui/core/styles';
+import RestaurantOutlinedIcon from '@material-ui/icons/RestaurantOutlined'
 
 const BottomNav = (props) => {
     const mobile = useMedia(['(min-width: 750px)', '(max-width: 750px)'], [false, true])
@@ -37,39 +28,31 @@ const BottomNav = (props) => {
         }
     }
 
-    const theme = createTheme({
-        palette: {
-          type: colorMode,
-          background: {
-            default: colorTheme.selectedBackground
-          },
-          primary:{
-              main: colorMode === "dark" ? "#90CDF4" : "#3182CE"
-          }, 
-        },
-      });
-
-      
-    const [value, setValue] = React.useState('clock');
-
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-        props.setView(newValue)
-    };
-
     return (
-        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', width: "100%", position: 'fixed', bottom: '25px', marginTop: "20px", zIndex: "1"}}>
-            <ThemeProvider theme={theme}>
-                <Paper elevation={4}>
-                    <BottomNavigation value={value} onChange={handleChange}>
-                        <BottomNavigationAction label="Food" value="food" icon={<FastfoodOutlinedIcon />} />
-                        <BottomNavigationAction label="Periods" value="schedule" icon={<ListOutlinedIcon />} />
-                        <BottomNavigationAction label="Clock" value="clock" icon={<AccessTimeOutlinedIcon />} />
-                        <BottomNavigationAction label="News" value="news" icon={<PlayCircleOutlineOutlinedIcon />} />
-                        <BottomNavigationAction label="Events" value="events" icon={<EventOutlinedIcon />} />
-                    </BottomNavigation>
-                </Paper>
-            </ThemeProvider>
+
+        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', width: "100%", position: 'fixed', bottom: '20px',marginTop: "20px", zIndex: "1"}}>
+          
+
+            <div style={{display: 'flex', zIndex: 4, boxShadow: "2px 2px 10px rgb(0,118,220,0.2)", borderRadius: "10px"}}>
+
+                <div onClick={() => {props.setView("food")}} style={{width: mobile ? "70px" : "80px", height: "45px", display: 'flex', borderRadius: "10px 0px 0px 10px",justifyContent: 'center', alignItems: "center", background: props.view == "food" ? colorTheme.selectedBackground: colorTheme.unselectedBackground , boxShadow: props.view == "food" ? colorTheme.boxShadow : "none", cursor: 'pointer'}}>
+                    <RestaurantOutlinedIcon style={{fontSize: "20px"}}/>
+                </div>
+                <div onClick={() => {props.setView("schedule")}} style={{width: mobile ? "70px" : "80px", height: "45px", display: 'flex' ,justifyContent: 'center', alignItems: "center", background: props.view == "schedule" ? colorTheme.selectedBackground: colorTheme.unselectedBackground , boxShadow: props.view == "schedule" ? colorTheme.boxShadow : "none", cursor: 'pointer'}}>
+                    <UnorderedListOutlined style={{fontSize: "20px"}}/>
+                </div>
+                <div onClick={() => {props.setView("clock")}} style={{width: mobile ? "70px" : "80px", height: "45px", display: 'flex' ,justifyContent: 'center', alignItems: "center", background: props.view == "clock" ? colorTheme.selectedBackground: colorTheme.unselectedBackground , boxShadow: props.view == "clock" ? colorTheme.boxShadow : "none", cursor: 'pointer'}}>
+                    <ClockCircleOutlined style={{fontSize: "20px"}}/>
+                </div>
+                <div onClick={() => {props.setView("news")}} style={{width: mobile ? "70px" : "80px", height: "45px", display: 'flex' ,justifyContent: 'center', alignItems: "center", background: props.view == "news" ? colorTheme.selectedBackground: colorTheme.unselectedBackground , boxShadow: props.view == "news" ? colorTheme.boxShadow : "none", cursor: 'pointer'}}>
+                    <PlayCircleOutlined style={{fontSize: "20px"}}/>
+                </div>
+                <div onClick={() => {props.setView("events")}} style={{width: mobile ? "70px" : "80px", height: "45px", display: 'flex', borderRadius: "0px 10px 10px 0px",justifyContent: 'center', alignItems: "center", background: props.view == "events" ? colorTheme.selectedBackground: colorTheme.unselectedBackground , boxShadow: props.view == "events" ? colorTheme.boxShadow : "none", cursor: 'pointer'}}>
+                    <CalendarOutlined style={{fontSize: "20px"}}/>
+                </div>
+
+            </div>
+
         </div>
     )
 }
