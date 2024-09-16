@@ -19,7 +19,7 @@ const SchoolEnd = () => {
   const vh = use100vh();
 
   const beginDate = dayjs("2023-08-09:00:00:00");
-  const endDate = dayjs("2024-05-29:15:00:00");
+  const endDate = dayjs("2024-09-11:9:00:00");
   const range = endDate - beginDate;
   const fromStart = dayjs().diff(beginDate);
   const toEnd = endDate - dayjs();

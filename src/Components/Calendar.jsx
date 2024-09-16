@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { use100vh } from "react-div-100vh";
 import dayjs from "dayjs";
@@ -33,7 +33,10 @@ import { setDate } from "date-fns/esm";
 import useMedia from "../Hooks/useMedia";
 import calendarImg from "../Assets/Calendar.jpg";
 import CalendarImageModal from "./Calendar/CalendarImageModal";
+import { getCalendar } from '../API/api' // import api for calendar data
 const dateFns = require("date-fns");
+
+
 
 const Navbar = (props) => {
   const dateFormat = "MMM yyyy";
@@ -61,13 +64,22 @@ const Sidebar = (props) => {
     whiteSpace: "nowrap",
   }
 
+  const [calendarData, setCalenderData] = useState();
+  useEffect(() => {
+    getCalendar().then(res => {
+        setCalenderData(res.data.data)
+        console.log(res.data.data)
+    })
+  }, [])
+
+
   return (
     <Card overflow={"hidden"} style={style} h={"70vh"}>
       <CardHeader bg={"blue.500"} color={"white"}>
         <Text fontSize={"2xl"}>Blue Day</Text>
         {dateFns.format(props.selectedDate, "PPP")}
       </CardHeader>
-      <CardBody>Hi</CardBody>
+      <CardBody>{calendarData ? calendarData.hey : "Loading..."}</CardBody>
     </Card>
 
   );
@@ -159,12 +171,19 @@ const Calendar = () => {
       setShowSidebar(true);
     }
   };
+  const [calendarData, setCalenderData] = useState();
+  useEffect(() => {
+    getCalendar().then(res => {
+        setCalenderData(res.data)
+        console.log(res.data)
+    })
+  }, [])
 
   return (
     <Flex justifyContent={"center"}>
       <Flex direction="column" paddingLeft={"5"} paddingRight={"5"} flexBasis={"64%"}>
         <Navbar month={currentMonth} next={nextMonth} prev={prevMonth} />
-        <Table month={currentMonth} selectedDate={selectedDate} onDateClick={handleSelect} toggleSidebar={toggleSidebar}/>
+        <Table month={currentMonth} selectedDate={selectedDate} onDateClick={handleSelect} toggleSidebar={toggleSidebar} calendarData={calendarData}/>
       </Flex>
       <Sidebar selectedDate={selectedDate} showSidebar={showSidebar}/>
     </Flex>

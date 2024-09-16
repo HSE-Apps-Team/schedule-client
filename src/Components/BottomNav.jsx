@@ -62,7 +62,7 @@ const BottomNav = (props) => {
           borderRadius: "10px",
         }}
       >
-        <div
+        {/* <div
           onClick={() => {
             props.setView("food");
           }}
@@ -82,7 +82,7 @@ const BottomNav = (props) => {
           }}
         >
           <RestaurantOutlinedIcon style={{ fontSize: "20px" }} />
-        </div>
+        </div> */}
         <div
           onClick={() => {
             props.setView("schedule");
