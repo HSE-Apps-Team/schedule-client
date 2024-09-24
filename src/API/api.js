@@ -20,6 +20,17 @@ export const getNewsCasts = () => {
   return axios.get(newsUrl);
 };
 
+// get the calendar data
 export const getCalendar = (month) => {
-  return axios.get(`${debugUrl}/schedules/calendar`);
+  return axios.get(`${debugUrl}/schedules/calendar`)
+    .catch(() => Promise.resolve(dummyCalendarData));
 };
+
+
+// this is dummy data for Nic to run this correctly
+const dummyCalendarData = {
+  "data":{
+    "hey":"there"
+  }
+}
+

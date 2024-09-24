@@ -67,8 +67,8 @@ const Sidebar = (props) => {
   const [calendarData, setCalenderData] = useState();
   useEffect(() => {
     getCalendar().then(res => {
-        setCalenderData(res.data.data)
-        console.log(res.data.data)
+        setCalenderData(res.data)
+        console.log(res.data)
     })
   }, [])
 
@@ -84,6 +84,9 @@ const Sidebar = (props) => {
 
   );
 }
+
+
+// if you are devving and find that the calendar data is taking 5-10 secs to load, it is because it is using dummy data after it realizes it cant find the server.
 
 const Cell = ({selected, date, day, disabled, onDateClick, toggleSidebar, type}) => {
   const style = {
