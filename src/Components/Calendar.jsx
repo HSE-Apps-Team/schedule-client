@@ -31,7 +31,6 @@ import {
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { setDate } from "date-fns/esm";
 import useMedia from "../Hooks/useMedia";
-import calendarImg from "../Assets/Calendar.jpg";
 import CalendarImageModal from "./Calendar/CalendarImageModal";
 import { getCalendar } from '../API/api' // import api for calendar data
 const dateFns = require("date-fns");

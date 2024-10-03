@@ -16,7 +16,6 @@ import {
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { setDate } from "date-fns/esm";
 import useMedia from "../Hooks/useMedia";
-import calen from "../Assets/Calendarimg.jpg";
 import { getCalendar } from "../API/api";
 const dateFns = require("date-fns");
 
@@ -35,14 +34,6 @@ const Events = () => {
     })
   }, [currentMonth]);
 
-  useEffect(() => {
-    console.log("getting calendar")
-    getCalendar().then((result) => {
-      console.log(result.data) 
-       setCalendar(result.data)
-       console.log("img"+cali.calendar_img)
-    })
-}, [])
   const renderHeader = () => {
     const dateFormat = "MMM yyyy";
     return (
