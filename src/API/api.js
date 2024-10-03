@@ -33,4 +33,7 @@ const dummyCalendarData = {
     "hey":"there"
   }
 }
+export const getClock = () => {
+  return axios.get(`${url}/announcements/breakclock`);
+};
 

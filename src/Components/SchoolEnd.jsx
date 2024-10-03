@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import dayjs from "dayjs";
 
+import { getClock } from "../API/api";
+
 import useMedia from "../Hooks/useMedia";
 import { use100vh } from "react-div-100vh";
 
@@ -18,8 +20,10 @@ const SchoolEnd = () => {
   );
   const vh = use100vh();
 
-  const beginDate = dayjs("2023-08-09:00:00:00");
-  const endDate = dayjs("2024-09-11:9:00:00");
+  const [beginDate, setBeginDate] = useState(dayjs("2023-08-09T00:00:00"));
+  const [endDate, setEndDate] = useState(dayjs("2024-05-29T15:00:00"));
+  const [name, setName] = useState("Break");
+  const [status, setStatus] = useState("LOADING");
   const range = endDate - beginDate;
   const fromStart = dayjs().diff(beginDate);
   const toEnd = endDate - dayjs();
@@ -31,6 +35,18 @@ const SchoolEnd = () => {
   let hoursLeft = dayjs.duration(toEnd, "ms").hours();
   let minutesLeft = dayjs.duration(toEnd, "ms").minutes();
   let secondsLeft = dayjs.duration(toEnd, "ms").seconds();
+
+  useEffect(() => {
+
+    getClock().then((result) => {
+      console.log(result.data);
+      // Update state with the fetched data
+      setBeginDate(dayjs(result.data.Start_Date));
+      setEndDate(dayjs(result.data.End_Date));
+      setName(result.data.title);
+      setStatus("LOADED");
+    });
+  }, []);
 
   const genText = () => {
     //setText(theText);
@@ -55,11 +71,10 @@ const SchoolEnd = () => {
 
   const timer = () => {
     setCurrentTime(dayjs().valueOf());
-
     setTimeout(() => timer(), 1000);
   };
-
-  return (
+  
+  return status !== "LOADING" ? (
     <div
       style={{
         height: vh - 120,
@@ -90,10 +105,27 @@ const SchoolEnd = () => {
               wordSpacing: "3px",
             }}
           >
-            Until Summer!
+            Until {name}!
           </Text>
         </CircularProgressLabel>
       </CircularProgress>
+    </div>
+  ) : (
+    <div
+      style={{
+        height: vh - 250,
+        display: "flex",
+        flexDirection: "row",
+        width: "100%",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <CircularProgress
+        isIndeterminate
+        size={mobile ? window.innerWidth * 0.5 : 150}
+        thickness={2.5}
+      />
     </div>
   );
 };
