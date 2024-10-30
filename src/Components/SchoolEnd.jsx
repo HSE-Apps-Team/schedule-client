@@ -164,7 +164,7 @@ const SchoolEnd = () => {
     <Box style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "60%", width: "100%" }}>
       <Text fontSize="4rem" padding={"20px"}>{name}</Text>
 
-      <FlipClockCountdown to={endDate} from={beginDate} text={timeText} digitBlockStyle={{ color: colorMode === "light" ? "black" : "white", background: colorMode === "light" ? "#f8f8f8" : "#54617a", width: "4rem", height: "7rem", fontSize: "4.5rem" }}/>
+      <FlipClockCountdown to={endDate} from={beginDate} text={timeText} digitBlockStyle={{ color: colorMode === "light" ? "black" : "white", background: colorMode === "light" ? "#f8f8f8" : "#54617a", width: "4rem", height: "7rem", fontSize: "4.5rem" }} dividerStyle={{ color: colorMode === "light" ? "white" : "#1a202c", height: "0px"}}/>
     </Box>
   );
 

@@ -16,6 +16,11 @@ const fallTheme = extendTheme({
       'fg-muted': { default: 'orange.600', _dark: 'orange.400' },
       'fg-subtle': { default: 'orange.500', _dark: 'orange.300' },
       'fg-on-accent': { default: 'orange', _dark: 'inherit' },
+      // background semantic tokens
+      bg: { default: 'orange.50', _dark: 'orange.900' },
+      'bg-subtle': { default: 'orange.100', _dark: 'orange.800' },
+      'bg-muted': { default: 'orange.200', _dark: 'orange.700' },
+      'bg-emphasis': { default: 'orange.300', _dark: 'orange.600' },
     },
   },
   fonts: {
