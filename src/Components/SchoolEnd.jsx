@@ -13,6 +13,7 @@ import {
   CircularProgressLabel,
   Text,
   Box,
+  useColorMode,
 } from "@chakra-ui/react";
 import { getByText } from "@testing-library/react";
 
@@ -22,7 +23,8 @@ const SchoolEnd = () => {
     [false, true]
   );
   const vh = use100vh();
-
+  const { colorMode } = useColorMode();
+  
   const [beginDate, setBeginDate] = useState(dayjs("2023-08-09T00:00:00"));
   const [endDate, setEndDate] = useState(dayjs("2024-05-29T15:00:00"));
   const [name, setName] = useState("Break");
@@ -159,9 +161,10 @@ const SchoolEnd = () => {
   // );
   
   return (
-    <Box style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "80%", width: "100%" }}>
-      <Text fontSize="4rem">{name}</Text>
-      <FlipClockCountdown to={endDate} from={beginDate} text={timeText} style={{ fccBackground: "#54617a" }}/>
+    <Box style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "60%", width: "100%" }}>
+      <Text fontSize="4rem" padding={"20px"}>{name}</Text>
+
+      <FlipClockCountdown to={endDate} from={beginDate} text={timeText} digitBlockStyle={{ color: colorMode === "light" ? "black" : "white", background: colorMode === "light" ? "#f8f8f8" : "#54617a", width: "4rem", height: "7rem", fontSize: "4.5rem" }}/>
     </Box>
   );
 
