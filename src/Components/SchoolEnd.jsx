@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import dayjs from "dayjs";
+import FlipClockCountdown from '@leenguyen/react-flip-clock-countdown';
+import '@leenguyen/react-flip-clock-countdown/dist/index.css';
 
 import { getClock } from "../API/api";
 
@@ -10,6 +12,7 @@ import {
   CircularProgress,
   CircularProgressLabel,
   Text,
+  Box,
 } from "@chakra-ui/react";
 import { getByText } from "@testing-library/react";
 
@@ -30,11 +33,11 @@ const SchoolEnd = () => {
 
   const percent = (fromStart / range) * 100;
 
-  let monthsLeft = dayjs.duration(toEnd, "ms").months();
-  let daysLeft = dayjs.duration(toEnd, "ms").days();
-  let hoursLeft = dayjs.duration(toEnd, "ms").hours();
-  let minutesLeft = dayjs.duration(toEnd, "ms").minutes();
-  let secondsLeft = dayjs.duration(toEnd, "ms").seconds();
+  let monthsLeft = dayjs.duration(toEnd, "ms").format("MM");
+  let daysLeft = dayjs.duration(toEnd, "ms").format("DD");
+  let hoursLeft = dayjs.duration(toEnd, "ms").format("HH");
+  let minutesLeft = dayjs.duration(toEnd, "ms").format("mm");
+  let secondsLeft = dayjs.duration(toEnd, "ms").format("ss");
 
   useEffect(() => {
 
@@ -73,61 +76,95 @@ const SchoolEnd = () => {
     setCurrentTime(dayjs().valueOf());
     setTimeout(() => timer(), 1000);
   };
+
   
-  return status !== "LOADING" ? (
-    <div
-      style={{
-        height: vh - 120,
-        display: "flex",
-        flexDirection: "row",
-        width: "100%",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <CircularProgress
-        trackColor="#f5f5f5"
-        thickness={3.5}
-        size={mobile ? window.innerWidth * 0.85 : 580}
-        value={percent}
-        capIsRound={true}
-      >
-        <CircularProgressLabel>
-          <Text marginBottom={0} fontSize={mobile ? "2.5rem" : "70px"}>
-            {genText()}
-          </Text>
-          <Text
-            type="secondary"
-            style={{
-              color: "grey",
-              fontSize: mobile ? "1.3rem" : "1.4rem",
-              marginTop: "0px",
-              wordSpacing: "3px",
-            }}
-          >
-            Until {name}!
-          </Text>
-        </CircularProgressLabel>
-      </CircularProgress>
-    </div>
-  ) : (
-    <div
-      style={{
-        height: vh - 250,
-        display: "flex",
-        flexDirection: "row",
-        width: "100%",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <CircularProgress
-        isIndeterminate
-        size={mobile ? window.innerWidth * 0.5 : 150}
-        thickness={2.5}
-      />
-    </div>
+  // return (
+  //   <Box style={{ display: "flex", flexDirection: "row", width: "100%", height: "100%", alignItems: "center", justifyContent: "space-around" }}>
+  //     <Box w="10%" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+  //       <Text fontSize="4rem">{monthsLeft}</Text>
+  //       <Text>Months</Text>
+  //     </Box>
+  //     <Box w="10%" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+  //       <Text fontSize="4rem">{daysLeft}</Text>
+  //       <Text>Days</Text>
+  //     </Box>
+  //     <Box w="10%" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+  //       <Text fontSize="4rem">{hoursLeft}</Text>
+  //       <Text>Hours</Text>
+  //     </Box>
+  //     <Box w="10%" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+  //       <Text fontSize="4rem">{minutesLeft}</Text>
+  //       <Text>Minutes</Text>
+  //     </Box>
+  //     <Box w="10%" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+  //       <Text fontSize="4rem">{secondsLeft}</Text>
+  //       <Text>Seconds</Text>
+  //     </Box>
+  //   </Box>
+  // );
+  
+  // return status !== "LOADING" ? (
+  //   <div
+  //     style={{
+  //       height: vh - 120,
+  //       display: "flex",
+  //       flexDirection: "row",
+  //       width: "100%",
+  //       alignItems: "center",
+  //       justifyContent: "center",
+  //     }}
+  //   >
+  //     <CircularProgress
+  //       trackColor="#f5f5f5"
+  //       thickness={3.5}
+  //       size={mobile ? window.innerWidth * 0.85 : 580}
+  //       value={percent}
+  //       capIsRound={true}
+  //     >
+  //       <CircularProgressLabel>
+  //         <Text marginBottom={0} fontSize={mobile ? "2.5rem" : "70px"}>
+  //           {genText()}
+  //         </Text>
+  //         <Text
+  //           type="secondary"
+  //           style={{
+  //             color: "grey",
+  //             fontSize: mobile ? "1.3rem" : "1.4rem",
+  //             marginTop: "0px",
+  //             wordSpacing: "3px",
+  //           }}
+  //         >
+  //           Until {name}!
+  //         </Text>
+  //       </CircularProgressLabel>
+  //     </CircularProgress>
+  //   </div>
+  // ) : (
+  //   <div
+  //     style={{
+  //       height: vh - 250,
+  //       display: "flex",
+  //       flexDirection: "row",
+  //       width: "100%",
+  //       alignItems: "center",
+  //       justifyContent: "center",
+  //     }}
+  //   >
+  //     <CircularProgress
+  //       isIndeterminate
+  //       size={mobile ? window.innerWidth * 0.5 : 150}
+  //       thickness={2.5}
+  //     />
+  //   </div>
+  // );
+  
+  return (
+    <Box style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "80%", width: "100%" }}>
+      <Text fontSize="4rem">{name}</Text>
+      <FlipClockCountdown to={endDate} from={beginDate} text={timeText} style={{ fccBackground: "#54617a" }}/>
+    </Box>
   );
+
 };
 
 export default SchoolEnd;
