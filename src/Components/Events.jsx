@@ -22,6 +22,7 @@ const dateFns = require("date-fns");
 
 const Events = () => {
   const vh = use100vh();
+  const [loading, setLoading] = useState(true);
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [startDay, setStartDay] = useState("royal");
@@ -31,8 +32,9 @@ const Events = () => {
     console.log("getting calendar")
     getCalendar().then((result) => {
       console.log(result.data) 
-       setCalendar(result.data)
-       console.log("img"+cali.calendar_img)
+      setCalendar(result.data)
+      console.log("img"+cali.calendar_img)
+      setLoading(false)
     })
 }, [])
   const renderHeader = () => {
@@ -153,7 +155,7 @@ const Events = () => {
     setCurrentMonth(dateFns.subMonths(currentMonth, 1));
   };
 
-  return (
+  return !loading ? (
     <div
       style={{
         height: vh,
@@ -164,8 +166,25 @@ const Events = () => {
       }}
     >
       <div style={{ display: "flex", width: "100%", justifyContent: "center", marginBottom: "25vh",}}>
-        <img src={cali.calendar_img} />
+        <img className="shadow" src={cali.calendar_img} />
       </div>
+    </div>
+  ) : (
+    <div
+      style={{
+        height: vh - 250,
+        display: "flex",
+        flexDirection: "row",
+        width: "100%",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <CircularProgress
+        isIndeterminate
+        size={mobile ? window.innerWidth * 0.5 : 150}
+        thickness={2.5}
+      />
     </div>
   );
   return (

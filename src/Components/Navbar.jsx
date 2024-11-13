@@ -84,7 +84,7 @@ const Navbar = ({ fullView, setFullView }) => {
         <Box style={{ padding: "15px 15px 10px 10px" }}>
           <IconButton
             onClick={onOpen}
-            colorScheme="blue"
+            className="button"
             isRound="True"
             icon={<SettingOutlined />}
             aria-label="settings"
@@ -92,13 +92,14 @@ const Navbar = ({ fullView, setFullView }) => {
         </Box>
       </Flex>
 
-      <Modal isOpen={isOpen} onClose={closeModal}>
+      <Modal isOpen={isOpen} onClose={closeModal} >
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent className="container shadow">
           <ModalHeader>Settings</ModalHeader>
           <ModalBody>
             <Stack
               direction="column"
+              className="container"
               style={{
                 display: "flex",
                 justifyContent: "space-between",
@@ -117,10 +118,10 @@ const Navbar = ({ fullView, setFullView }) => {
                   value={settingsPending["royalDay"]}
                 >
                   <Stack direction="row">
-                    <Radio value="A">A Lunch</Radio>
-                    <Radio value="B">B Lunch</Radio>
-                    <Radio value="C">C Lunch</Radio>
-                    <Radio value="D">D Lunch</Radio>
+                    <Radio className="radio" value="A">A Lunch</Radio>
+                    <Radio className="radio" value="B">B Lunch</Radio>
+                    <Radio className="radio" value="C">C Lunch</Radio>
+                    <Radio className="radio" value="D">D Lunch</Radio>
                   </Stack>
                 </RadioGroup>
               </div>
@@ -135,10 +136,10 @@ const Navbar = ({ fullView, setFullView }) => {
                   value={settingsPending["grayDay"]}
                 >
                   <Stack direction="row">
-                    <Radio value="A">A Lunch</Radio>
-                    <Radio value="B">B Lunch</Radio>
-                    <Radio value="C">C Lunch</Radio>
-                    <Radio value="D">D Lunch</Radio>
+                    <Radio className="radio" value="A">A Lunch</Radio>
+                    <Radio className="radio" value="B">B Lunch</Radio>
+                    <Radio className="radio" value="C">C Lunch</Radio>
+                    <Radio className="radio" value="D">D Lunch</Radio>
                   </Stack>
                 </RadioGroup>
               </div>
@@ -153,8 +154,8 @@ const Navbar = ({ fullView, setFullView }) => {
                   value={settingsPending["display"]}
                 >
                   <Stack direction="row">
-                    <Radio value="Period">Period</Radio>
-                    <Radio value="Timer">Timer</Radio>
+                    <Radio className="radio" value="Period">Period</Radio>
+                    <Radio className="radio" value="Timer">Timer</Radio>
                   </Stack>
                 </RadioGroup>
               </div>
@@ -179,7 +180,7 @@ const Navbar = ({ fullView, setFullView }) => {
                   </Text>
 
                   <Switch
-                    isChecked={fullView}
+                    isChecked={fullView ? true : false}
                     onChange={toggleFullView}
                     size="lg"
                   ></Switch>

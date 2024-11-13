@@ -2,13 +2,7 @@ import React from "react";
 
 import useMedia from "../Hooks/useMedia";
 
-import {
-  CalendarOutlined,
-  ClockCircleOutlined,
-  UnorderedListOutlined,
-  PlayCircleOutlined,
-} from "@ant-design/icons";
-import { theme, useColorMode, Text, Center } from "@chakra-ui/react";
+import { theme, useColorMode, Text, Center, useTheme } from "@chakra-ui/react";
 import RestaurantOutlinedIcon from "@material-ui/icons/RestaurantOutlined";
 
 const BottomNav = (props) => {
@@ -18,21 +12,25 @@ const BottomNav = (props) => {
   );
   const { colorMode, toggleColorMode } = useColorMode();
 
+  const theme = useTheme();
+
   let colorTheme;
 
   if (colorMode == "dark") {
     colorTheme = {
       selectedBackground: "#54617a",
       unselectedBackground: "#3a4354",
-      // boxShadow: "2px 2px 10px rgb(0,118,220,0.32)",
     };
   } else if (colorMode == "light") {
     colorTheme = {
       selectedBackground: "white",
       unselectedBackground: "#f8f8f8",
-      // boxShadow: "2px 2px 10px rgb(0,118,220,0.32)",
     };
   }
+  // colorTheme = {
+  //   selectedBackground: theme.semanticTokens.colors.accent,
+  //   unselectedBackground: theme.semanticTokens.colors.bg,
+  // };
 
   const iconStyle = { 
     fontSize: "20px", 
@@ -55,10 +53,10 @@ const BottomNav = (props) => {
       }}
     >
       <div
+        className="shadow"
         style={{
           display: "flex",
           zIndex: 4,
-          // boxShadow: "2px 2px 10px rgb(0,118,220,0.2)",
           borderRadius: "10px",
         }}
       >
@@ -66,18 +64,15 @@ const BottomNav = (props) => {
           onClick={() => {
             props.setView("food");
           }}
+          className={ props.view == "food" ? "selected" : "component" }
           style={{
+            boxShadow: "inset 0 1px hsla(0,0%,100%,.05)",
             width: mobile ? "70px" : "80px",
             height: "45px",
             display: "flex",
             borderRadius: "10px 0px 0px 10px",
             justifyContent: "center",
             alignItems: "center",
-            background:
-              props.view == "food"
-                ? colorTheme.selectedBackground
-                : colorTheme.unselectedBackground,
-            boxShadow: props.view == "food" ? colorTheme.boxShadow : "none",
             cursor: "pointer",
           }}
         >
@@ -87,17 +82,15 @@ const BottomNav = (props) => {
           onClick={() => {
             props.setView("schedule");
           }}
+          className={ props.view == "schedule" ? "selected" : "component" }
           style={{
             width: mobile ? "70px" : "80px",
             height: "45px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            background:
-              props.view == "schedule"
-                ? colorTheme.selectedBackground
-                : colorTheme.unselectedBackground,
-            boxShadow: props.view == "schedule" ? colorTheme.boxShadow : "none",
+            // boxShadow: props.view == "schedule" ? colorTheme.boxShadow : "none",
+            boxShadow: "inset 0 1px hsla(0,0%,100%,.05)",
             cursor: "pointer",
           }}
         >
@@ -108,17 +101,15 @@ const BottomNav = (props) => {
           onClick={() => {
             props.setView("clock");
           }}
+          className={ props.view == "clock" ? "selected" : "component" }
           style={{
             width: mobile ? "70px" : "80px",
             height: "45px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            background:
-              props.view == "clock"
-                ? colorTheme.selectedBackground
-                : colorTheme.unselectedBackground,
-            boxShadow: props.view == "clock" ? colorTheme.boxShadow : "none",
+            // boxShadow: props.view == "clock" ? colorTheme.boxShadow : "none",
+            boxShadow: "inset 0 1px hsla(0,0%,100%,.05)",
             cursor: "pointer",
           }}
         >
@@ -129,18 +120,16 @@ const BottomNav = (props) => {
           onClick={() => {
             props.setView("schoolend");
           }}
+          className={ props.view == "schoolend" ? "selected" : "component" }
           style={{
             width: mobile ? "70px" : "80px",
             height: "45px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            background:
-              props.view == "schoolend"
-                ? colorTheme.selectedBackground
-                : colorTheme.unselectedBackground,
-            boxShadow:
-              props.view == "schoolend" ? colorTheme.boxShadow : "none",
+            // boxShadow:
+            //   props.view == "schoolend" ? colorTheme.boxShadow : "none",
+            boxShadow: "inset 0 1px hsla(0,0%,100%,.05)",
             cursor: "pointer",
           }}
         >
@@ -151,6 +140,7 @@ const BottomNav = (props) => {
           onClick={() => {
             props.setView("events");
           }}
+          className={ props.view == "events" ? "selected" : "component" }
           style={{
             width: mobile ? "70px" : "80px",
             height: "45px",
@@ -158,11 +148,8 @@ const BottomNav = (props) => {
             borderRadius: "0px 10px 10px 0px",
             justifyContent: "center",
             alignItems: "center",
-            background:
-              props.view == "events"
-                ? colorTheme.selectedBackground
-                : colorTheme.unselectedBackground,
             boxShadow: props.view == "events" ? colorTheme.boxShadow : "none",
+            boxShadow: "inset 0 1px hsla(0,0%,100%,.05)",
             cursor: "pointer",
           }}
         >

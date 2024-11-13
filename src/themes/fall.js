@@ -1,4 +1,5 @@
-import { extendTheme, defineStyle, defineStyleConfig } from '@chakra-ui/react'
+import { extendTheme, defineStyle, defineStyleConfig, CircularProgress } from '@chakra-ui/react'
+import { bg } from 'date-fns/locale'
 
 const fallTheme = extendTheme({
   config: {},
@@ -15,12 +16,15 @@ const fallTheme = extendTheme({
       'fg-emphasis': { default: 'orange.900', _dark: 'orange.200' },
       'fg-muted': { default: 'orange.600', _dark: 'orange.400' },
       'fg-subtle': { default: 'orange.500', _dark: 'orange.300' },
-      'fg-on-accent': { default: 'orange', _dark: 'inherit' },
+      'fg-on-accent': { default: 'orange', _dark: 'orange' },
       // background semantic tokens
-      bg: { default: 'orange.50', _dark: 'orange.900' },
-      'bg-subtle': { default: 'orange.100', _dark: 'orange.800' },
-      'bg-muted': { default: 'orange.200', _dark: 'orange.700' },
-      'bg-emphasis': { default: 'orange.300', _dark: 'orange.600' },
+      bg: { default: 'orange.100', _dark: 'orange.900' },
+      'bg-subtle': { default: 'orange.200', _dark: 'orange.800' },
+      'bg-muted': { default: 'orange.300', _dark: 'orange.700' },
+      'bg-emphasis': { default: 'orange.400', _dark: 'orange.600' },
+      'bg-selected': { default: 'orange.100', _dark: 'orange.700' },
+      // misc semantic tokens
+      'focus-ring': { default: 'rgba(255, 255, 255, 0.2)', _dark: 'rgba(255, 255, 255, 0.2)' },
     },
   },
   fonts: {
@@ -33,6 +37,27 @@ const fallTheme = extendTheme({
         WebkitFontSmoothing: 'antialiased',
         MozOsxFontSmoothing: 'grayscale',
         color: 'fg',
+        bg: 'bg',
+        '.container': {
+          bg: 'bg-subtle',
+          color: 'fg-emphasis',
+          boxShadow: "inset 0 1px hsla(0,0%,100%,.05)",
+        },
+        '.selected': {
+          color: 'fg',
+          bg: 'bg-selected',
+          boxShadow: "inset 0 1px hsla(0,0%,100%,.05)",
+        },
+        '.component': {
+          color: 'fg',
+          bg: 'bg-subtle',
+          boxShadow: "inset 0 1px hsla(0,0%,100%,.05)",
+        },
+        '.current': {
+          color: 'fg',
+          bg: 'bg-muted',
+          boxShadow: "inset 0 1px hsla(0,0%,100%,.05)",
+        },
         '.deleted': {
           color: '#ff8383 !important',
           fontStyle: 'normal !important',
@@ -41,6 +66,30 @@ const fallTheme = extendTheme({
           color: '#b5f4a5 !important',
           fontStyle: 'normal !important',
         },
+        '.button': {
+          bg: 'bg-subtle',
+          color: 'fg',
+          boxShadow: "inset 0 1px hsla(0,0%,100%,.05)",
+          _hover: {
+            bg: 'bg-emphasis',
+            color: 'fg-emphasis',
+          },
+          _active: {
+            bg: 'bg-muted',
+            color: 'fg-muted',
+          },
+          _focus: {
+            boxShadow: '0 0 0 3px rgba(255, 255, 255, 0.2)',
+          }
+        },
+        '.progress': {
+          color: 'fg',
+          trackColor: 'bg-subtle',
+        },
+        '.tick-flip-panel': {
+          bg: 'bg-subtle',
+          color: 'fg',
+        }
       },
     },
   },
@@ -121,9 +170,9 @@ const fallTheme = extendTheme({
       my: '4rem',
     },
     blockquote: {
-      bg: 'orange.100',
+      bg: 'accent-subtle',
       borderWidth: '1px',
-      borderColor: 'orange.200',
+      borderColor: 'accent',
       rounded: 'lg',
       px: '1.25rem',
       py: '1rem',
@@ -151,7 +200,13 @@ const fallTheme = extendTheme({
       color: 'fg-on-accent',
       _hover: {
         bg: 'accent-emphasis',
+        color: 'fg-on-accent-emphasis',
       },
+      _active: {
+        bg: 'accent-muted',
+        color: 'fg-on-accent-muted',
+      },
+
     },
   },
 })

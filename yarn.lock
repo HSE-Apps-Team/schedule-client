@@ -2389,6 +2389,11 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.8.tgz#6b79032e760a0899cd4204710beede972a3a185f"
   integrity sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==
 
+"@pqina/flip@^1.8.3":
+  version "1.8.3"
+  resolved "https://registry.yarnpkg.com/@pqina/flip/-/flip-1.8.3.tgz#f7e8fe8552af21a61b1ad6418ff781bc8d7bc84c"
+  integrity sha512-KxlpF4xlnykYfR2TeAWtKEegWuZ6NA4ySDt+I7HLU25BIgG3EoQF3n5fFIq38cvhs4MfCoBk7UAcjolS90DYGQ==
+
 "@reach/alert@0.13.2":
   version "0.13.2"
   resolved "https://registry.yarnpkg.com/@reach/alert/-/alert-0.13.2.tgz#71c4a848d51341f1d6d9eaae060975391c224870"
