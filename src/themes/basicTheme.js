@@ -32,8 +32,8 @@ const basicTheme = extendTheme(
       },
     },
     fonts: {
-      heading: 'Inter, sans-serif',
-      body: 'Inter, sans-serif',
+      heading: 'Segoe UI, sans-serif',
+      body: 'Segoe UI, sans-serif',
     },
     styles: {
       global: {
