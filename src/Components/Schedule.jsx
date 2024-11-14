@@ -58,26 +58,15 @@ const Schedule = (props) => {
   return !loading ? (
     <>
       <Box style={{ width: "100%", height: "100%", paddingBottom: mobile ? "175px" : "15%", overflowY: "hidden" }}>
-        <Text
-          fontSize="xl"
-          style={{
-            textAlign: "center",
-          }}
-        >
-          Today is a{" "}
-          <span
-            style={{
-              color:
-                localStorage.getItem("day-type") == "Royal"
-                  ? "#0072c7"
-                  : "#b7cee7",
-            }}
-          >
-          {localStorage.getItem("day-type") == "Royal" ?
-              "Blue" : "Gray"}
-          </span>{" "}
-          Day
-        </Text>
+        <HStack width={"100%"} align={"center"} justify={"center"}>
+          <Text fontSize={"xl"} textAlign={"center"}>
+            Today is a
+          </Text>
+          <Text fontSize="xl" color={localStorage.getItem("day-type") == "Royal" ? "blue" : "gray"}>
+            {localStorage.getItem("day-type") == "Royal" ? "Blue" : "Gray"}
+          </Text>
+          <Text fontSize={"xl"}>Day</Text>
+        </HStack>
 
         <Box style={{ 
           display: "flex",

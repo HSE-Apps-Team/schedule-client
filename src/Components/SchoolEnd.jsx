@@ -52,9 +52,11 @@ const SchoolEnd = () => {
   }, []);
 
   return !loading ? (
-    <Box marginTop={vh * 0.05}>
-      <Text fontSize="3rem" padding={"20px"} textAlign={"center"}>{name}</Text>
-      <Flip to={endDate} className="shadow"/>
+    <Box display={"flex"} height={"100%"} flexDirection={"column"} justifyContent={"center"} paddingBottom={"200px"}>
+      <Text fontSize={mobile ? "3xl" : "6xl"} paddingBottom={"10px"} textAlign={"center"}>{name}</Text>
+      <Box display={"flex"} justifyContent={"center"}>
+        <Flip to={endDate} className="shadow" mobile={mobile}/>
+      </Box>
     </Box>
   ) : (
     <div

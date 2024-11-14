@@ -1,21 +1,28 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useColorMode } from "@chakra-ui/react";
 import Tick from "@pqina/flip";
 import "@pqina/flip/dist/flip.min.css";
 
 // create visual counter
-const Flip = ({ to }) => {
+const Flip = ({ to, mobile }) => {
     const { colorMode, toggleColorMode } = useColorMode();
     const tickRef = useRef(null);
+    const [test, setTest] = useState(0);
+
+    const [label, setLabel] = useState(['Days', 'Hours', 'Minutes', 'Seconds']);
   
     useEffect(() => {
       const tick = Tick.DOM.create(tickRef.current, {
         didInit: function (tick) {
           // create the countdown counter
-          var counter = Tick.count.down(to);
+          var counter = Tick.count.down(to, {
+            format: mobile ? ['d', 'h', 'm'] : ['d', 'h', 'm', 's'],
+          });
+          
   
           counter.onupdate = function (value) {
             tick.value = value;
+            setTest(tick.value);
           };
         },
       });
@@ -26,14 +33,14 @@ const Flip = ({ to }) => {
     }, [to]);
 
   return (
-    <div>
+    <div style={{ margin: "0px 20px", width: "80%" }}>
         <style>
             {`
                 .tick {
                     display: flex;
                     justify-content: center;
                     width: 100%;
-                    max-font-size: 1rem;
+                    max-font-size: 1em;
                     white-space: nowrap;
                     font-family: arial, sans-serif;
                 }
@@ -66,7 +73,7 @@ const Flip = ({ to }) => {
                 }
 
                 .tick-label {
-                    margin-top: .25em;
+                    margin-top: 10px;
                     max-font-size: 1em;
                 }
 

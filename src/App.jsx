@@ -56,7 +56,6 @@ const App = () => {
     <>
       <Box overflow={"hidden"} h={"100vh"}>
         <Navbar fullView={fullView} setFullView={setFullView} />
-        <BottomNav setView={setView} view={view} />
         <Announcements />
 
         <Box h={"100%"} >
@@ -68,8 +67,8 @@ const App = () => {
           {view == "events" && <Events />}
           {view == "food" && <Food />}
           {view == "schoolend" && <SchoolEnd />}
+          <BottomNav setView={setView} view={view} />
         </Box>
-
         <SpecialToast />
       </Box>
     </>

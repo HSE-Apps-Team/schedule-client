@@ -1,5 +1,6 @@
 import { extendTheme, withDefaultColorScheme } from '@chakra-ui/react'
 import { colors } from '@material-ui/core'
+import { blue } from '@material-ui/core/colors'
 import { bg } from 'date-fns/locale'
 
 const basicTheme = extendTheme(
@@ -8,6 +9,8 @@ const basicTheme = extendTheme(
     config: {},
     semanticTokens: {
       colors: {
+        blue: { default: 'blue.500', _dark: 'blue.300' },
+        gray: { default: 'gray.500', _dark: 'gray.300' },
         // accent semantic tokens
         accent: { default: 'blue.500', _dark: 'blue.300' },
         'accent-emphasis': { default: 'blue.700', _dark: 'blue.200' },
@@ -26,6 +29,7 @@ const basicTheme = extendTheme(
         'bg-muted': { default: 'gray.300', _dark: 'gray.700' },
         'bg-emphasis': { default: 'gray.400', _dark: 'gray.600' },
         'bg-selected': { default: 'gray.200', _dark: 'gray.700' },
+        'bg-box' : { default: 'gray.50', _dark: 'gray.800' },
         // misc semantic tokens
         'focus-ring': { default: 'rgba(255, 255, 255, 0.5)', _dark: 'rgba(255, 255, 255, 0.5)' },
         'shadow': 'rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px, inset 0 1px hsla(0,0%,100%,.05)',
@@ -48,7 +52,7 @@ const basicTheme = extendTheme(
           },
           '.component': {
             color: 'fg',
-            bg: 'bg-subtle',
+            bg: 'bg-box',
           },
           '.selected': {
             color: 'fg',
@@ -109,7 +113,7 @@ const basicTheme = extendTheme(
             stroke: 'bg-subtle',
           },
           '.tick-flip-panel': {
-            bg: 'bg-subtle',
+            bg: 'bg-box',
             color: 'fg',
           }
         },
