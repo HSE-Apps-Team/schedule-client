@@ -12,7 +12,8 @@ import SchoolEnd from "./Components/SchoolEnd";
 import Announcements from "./Components/Announcements";
 import SpecialToast from "./Components/SpecialToast";
 
-import { Box } from "@chakra-ui/react";
+import { Box, theme } from "@chakra-ui/react";
+import { th } from "date-fns/locale";
 
 const App = () => {
   const settingsFromStorage = localStorage.getItem("scheduleSettings");
@@ -54,11 +55,10 @@ const App = () => {
   return (
     <>
       <Box overflow={"hidden"} h={"100vh"}>
-        <Navbar fullView={false} setFullView={setFullView} />
-        <BottomNav setView={setView} view={view} />
+        <Navbar fullView={fullView} setFullView={setFullView} />
         <Announcements />
 
-        <Box h={"100%"}>
+        <Box h={"100%"} >
           {view == "clock" && (
             <Clock fullView={fullView} setFullView={setFullView} />
           )}
@@ -67,8 +67,8 @@ const App = () => {
           {view == "events" && <Events />}
           {view == "food" && <Food />}
           {view == "schoolend" && <SchoolEnd />}
+          <BottomNav setView={setView} view={view} />
         </Box>
-
         <SpecialToast />
       </Box>
     </>

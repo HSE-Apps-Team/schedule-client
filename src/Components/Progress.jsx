@@ -92,6 +92,7 @@ const Progress = ({
       }}
     >
       <CircularProgress
+        className="progress"
         trackColor="#f5f5f5"
         thickness={3.5}
         size={mobile ? window.innerWidth * 0.85 : 580}
@@ -134,8 +135,8 @@ const Progress = ({
                     nextPeriod?.lunchPeriods && lunchText == "A" ? (
                       <Text
                         type="secondary"
+                        className="p"
                         style={{
-                          color: "grey",
                           fontSize: mobile ? "1.3rem" : "1.4rem",
                           marginTop: "0px",
                           wordSpacing: "3px",
@@ -146,8 +147,8 @@ const Progress = ({
                     ) : (
                       <Text
                         type="secondary"
+                        className="p"
                         style={{
-                          color: "grey",
                           fontSize: mobile ? "1.3rem" : "1.4rem",
                           marginTop: "0x",
                           wordSpacing: "3px",
@@ -163,8 +164,8 @@ const Progress = ({
                           DURING: (
                             <Text
                               type="secondary"
+                              className="p"
                               style={{
-                                color: "grey",
                                 fontSize: mobile ? "1.3rem" : "1.4rem",
                                 marginTop: "0x",
                                 wordSpacing: "3px",
@@ -177,8 +178,8 @@ const Progress = ({
                           BEFORE: (
                             <Text
                               type="secondary"
+                              className="p"
                               style={{
-                                color: "grey",
                                 fontSize: mobile ? "1.3rem" : "1.4rem",
                                 marginTop: "0x",
                                 wordSpacing: "3px",
@@ -190,8 +191,8 @@ const Progress = ({
                           AFTER: (
                             <Text
                               type="secondary"
+                              className="p"
                               style={{
-                                color: "grey",
                                 fontSize: mobile ? "1.3rem" : "1.4rem",
                                 marginTop: "0x",
                                 wordSpacing: "3px",
@@ -206,8 +207,8 @@ const Progress = ({
                       ) : (
                         <Text
                           type="secondary"
+                          className="p"
                           style={{
-                            color: "grey",
                             fontSize: mobile ? "1.2rem" : "1.4rem",
                             marginTop: "0x",
                             wordSpacing: "3px",
@@ -224,8 +225,8 @@ const Progress = ({
               ) : (
                 <Text
                   type="secondary"
+                  className="p"
                   style={{
-                    color: "grey",
                     fontSize: mobile ? "1.3rem" : "1.5rem",
                     marginTop: "0",
                     wordSpacing: "3px",

@@ -328,6 +328,7 @@ const Clock = ({ fullView, setFullView }) => {
   return status == "SCHOOL_NOW" ? (
     !fullView ? (
       <Progress
+        className="container"
         genText={genText}
         period={period}
         nextPeriod={nextPeriod}
@@ -358,19 +359,20 @@ const Clock = ({ fullView, setFullView }) => {
           }}
         >
           <Progress
+            className="container"
             genText={genText}
             period={period}
             nextPeriod={nextPeriod}
             settings={settings}
             lunchStatus={lunchStatus}
             currentTime={currentTime}
+
           />
         </div>
         <div
           style={{
             height: vh - 120,
             display: "flex",
-            flexDirection: "column",
             width: "100%",
             alignItems: "center",
             justifyContent: "center",
@@ -405,7 +407,7 @@ const Clock = ({ fullView, setFullView }) => {
       >
         <h1
           style={{
-            color: "white",
+            // color: "white",
             fontSize: mobile ? "24px" : "32px",
             margin: "10px 0px",
             fontWeight: 400,
@@ -416,7 +418,7 @@ const Clock = ({ fullView, setFullView }) => {
         </h1>
         <h1
           style={{
-            color: "white",
+            // color: "white",
             fontSize: mobile ? "24px" : "32px",
             margin: "10px 0px",
             fontWeight: 400,

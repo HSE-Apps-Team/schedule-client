@@ -4,14 +4,15 @@ import ReactDOM from 'react-dom';
 import { ColorModeScript, ChakraProvider } from "@chakra-ui/react"
 
 import App from './App';
-import theme from './Hooks/theme'
+import theme from './Hooks/theme.js'
+import basicTheme from './themes/basicTheme.js'
+import fallTheme from './themes/fall.js'
 
 ReactDOM.render(
   <React.StrictMode>
-    <ChakraProvider>
-      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+    <ChakraProvider theme={basicTheme}>
       <App />
-      </ChakraProvider>
+    </ChakraProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
