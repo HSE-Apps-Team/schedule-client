@@ -37,14 +37,7 @@ const Events = () => {
       setLoading(false)
     })
 }, [])
-
- 
-
   const mobile = useMedia(["(max-width: 450px)"], [true]);
-
-
-
-
   return !loading ? (
     <div
       style={{

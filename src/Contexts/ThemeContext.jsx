@@ -8,27 +8,31 @@ export const ThemeContext = createContext();
 const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(extendTheme(themeList["basic"]));
   const [themeSettings, setThemeSettings] = useState(JSON.parse(localStorage.getItem("scheduleSettings")));
-
+  const [insideThemeSettings, setInsideThemeSettings] = useState(themeSettings);
   useEffect(() => {
+    // const config = { initialColorMode: 'light', useSystemColorMode: true };
+    // const currentTheme = themeSettings && themeSettings['theme'] ? themeSettings['theme'] : 'basic';
+    
     const config = { initialColorMode: 'light', useSystemColorMode: true };
-    const currentTheme = themeSettings && themeSettings['theme'] ? themeSettings['theme'] : 'basic';
+    const newSettings = JSON.parse(localStorage.getItem("scheduleSettings"));
+    setInsideThemeSettings(newSettings); // update the state, but wait theres more
+    // this uses newSettings because insideThemeSettings is not updated yet
+    const currentTheme = newSettings && newSettings['theme'] ? newSettings['theme'] : 'basic';
     setTheme(extendTheme({ ...themeList[currentTheme.toLowerCase()], config }));
+
   }, [themeSettings]);
 
-  useEffect(() => {
-    const handleStorageChange = () => {
-      const newSettings = JSON.parse(localStorage.getItem("scheduleSettings"));
-      setThemeSettings(newSettings);
-      const config = { initialColorMode: 'light', useSystemColorMode: true };
-      setTheme(extendTheme({ ...themeList[newSettings['theme'].toLowerCase()], config }));
-    };
-    window.addEventListener('storage', handleStorageChange);
-    return () => window.removeEventListener('storage', handleStorageChange);
-  }, [themeSettings]);
+  // useEffect(() => {
+  //   const handleStorageChange = () => {
+  //     const newSettings = JSON.parse(localStorage.getItem("scheduleSettings"));
+  //     setThemeSettings(newSettings);
+  //     const config = { initialColorMode: 'light', useSystemColorMode: true };
+  //     setTheme(extendTheme({ ...themeList[newSettings['theme'].toLowerCase()], config }));
+  //   };
+  //   window.addEventListener('storage', handleStorageChange);
+  //   return () => window.removeEventListener('storage', handleStorageChange);
+  // }, [themeSettings]);
 
-  if (!theme) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <ThemeContext.Provider value={{ theme, setThemeSettings }}>
@@ -37,6 +41,7 @@ const ThemeProvider = ({ children }) => {
         </ChakraProvider>
     </ThemeContext.Provider>
   );
+
 };
 
 export default ThemeProvider;
