@@ -24,6 +24,7 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
+  extendTheme,
 } from "@chakra-ui/react";
 
 import {
@@ -36,6 +37,7 @@ import { ChatIcon } from "@chakra-ui/icons";
 
 import logo from "../Assets/hseapps.png";
 import useMedia from "../Hooks/useMedia";
+import { ThemeContext } from "../Contexts/ThemeContext";
 
 const Navbar = ({ fullView, setFullView }) => {
   const mobile = useMedia(
@@ -45,12 +47,16 @@ const Navbar = ({ fullView, setFullView }) => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
+  const { theme, setThemeSettings } = useContext(ThemeContext);
 
   const [settings, setSettings] = useState(
     JSON.parse(localStorage.getItem("scheduleSettings"))
   );
   const [settingsPending, setSettingsPending] = useState(settings);
 
+  const handleSave = () => {
+    setThemeSettings(settings);
+  };
   const closeModal = () => {
     onClose();
     setSettingsPending(settings);
@@ -159,6 +165,7 @@ const Navbar = ({ fullView, setFullView }) => {
                   </Stack>
                 </RadioGroup>
               </div>
+
               <div style={{ marginTop: "3px", marginBottom: "20px" }}>
                 <Text strong style={{ fontSize: "10px", marginBottom: "10px" }}>
                   DARK MODE{" "}
@@ -170,6 +177,24 @@ const Navbar = ({ fullView, setFullView }) => {
                   size="lg"
                 ></Switch>
               </div>
+
+              <div style={{ marginTop: "3px", marginBottom: "20px" }}>
+                <Text strong style={{ fontSize: "10px", marginBottom: "10px" }}>
+                  THEME
+                </Text>
+                <RadioGroup
+                  onChange={(e) => {
+                    setSettingsPending({ ...settingsPending, theme: e });
+                  }}
+                  value={settingsPending["theme"]}
+                >
+                  <Stack direction="row">
+                    <Radio className="radio" value="Basic">Basic</Radio>
+                    <Radio className="radio" value="Fall">Fall</Radio>
+                  </Stack>
+                </RadioGroup>
+              </div>
+
               {!mobile && (
                 <div style={{ marginTop: "3px", marginBottom: "20px" }}>
                   <Text
@@ -210,11 +235,7 @@ const Navbar = ({ fullView, setFullView }) => {
               </a>
               <a target="_blank" href="https://forms.gle/89AcvDmLDaX8qgu86">
                 <ChatIcon
-                  style={{
-                    marginRight: "8px",
-                    marginTop: "6px",
-                    color: "#1890ff",
-                  }}
+                  style={{ marginRight: "8px", color: "#1890ff" }}
                 ></ChatIcon>
               </a>
             </div>
@@ -232,7 +253,7 @@ const Navbar = ({ fullView, setFullView }) => {
               Cancel
             </Button>
             <Button
-              colorScheme="blue"
+              className="button"
               mr={3}
               onClick={() => {
                 onClose();
@@ -241,6 +262,7 @@ const Navbar = ({ fullView, setFullView }) => {
                   "scheduleSettings",
                   JSON.stringify(settingsPending)
                 );
+                handleSave();
               }}
             >
               Save

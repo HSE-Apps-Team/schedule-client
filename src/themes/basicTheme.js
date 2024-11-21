@@ -6,7 +6,6 @@ import { bg } from 'date-fns/locale'
 const basicTheme = extendTheme(
   withDefaultColorScheme({ colorScheme: 'blue', components: ['Switch'] }), // set colorScheme to accent color
   {
-    config: {},
     semanticTokens: {
       colors: {
         blue: { default: 'blue.500', _dark: 'blue.300' },
