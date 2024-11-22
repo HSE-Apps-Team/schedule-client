@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 import BottomNav from "./Components/BottomNav";
-import Calendar from "./Components/Calendar";
 import Clock from "./Components/Clock";
 import Events from "./Components/Events";
 import Food from "./Components/Food";
@@ -13,9 +12,10 @@ import SchoolEnd from "./Components/SchoolEnd";
 import Announcements from "./Components/Announcements";
 import SpecialToast from "./Components/SpecialToast";
 
-import { Box } from "@chakra-ui/react";
+import { Box, theme } from "@chakra-ui/react";
+import { th } from "date-fns/locale";
 
-const App = () => {
+const App = ( theme ) => {
   const settingsFromStorage = localStorage.getItem("scheduleSettings");
   if (!settingsFromStorage) {
     localStorage.setItem(
@@ -55,19 +55,20 @@ const App = () => {
   return (
     <>
       <Box overflow={"hidden"} h={"100vh"}>
-        <Navbar fullView={false} setFullView={setFullView} />
-        <BottomNav setView={setView} view={view} />
+        <Navbar fullView={fullView} setFullView={setFullView} />
         <Announcements />
 
-        {view == "clock" && (
-          <Clock fullView={fullView} setFullView={setFullView} />
-        )}
-        {view == "schedule" && <Schedule />}
-        {view == "news" && <News />}
-        {view == "events" && <Calendar />}
-        {view == "food" && <Food />}
-        {view == "schoolend" && <SchoolEnd />}
-
+        <Box h={"100%"} >
+          {view == "clock" && (
+            <Clock fullView={fullView} setFullView={setFullView} />
+          )}
+          {view == "schedule" && <Schedule />}
+          {view == "news" && <News />}
+          {view == "events" && <Events />}
+          {view == "food" && <Food />}
+          {view == "schoolend" && <SchoolEnd />}
+          <BottomNav setView={setView} view={view} />
+        </Box>
         <SpecialToast />
       </Box>
     </>
