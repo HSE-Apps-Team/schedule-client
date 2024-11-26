@@ -191,6 +191,7 @@ const Navbar = ({ fullView, setFullView }) => {
                   <Stack direction="row">
                     <Radio className="radio" value="Basic">Basic</Radio>
                     <Radio className="radio" value="Fall">Fall</Radio>
+                    <Radio className="radio" value="Winter">Winter</Radio>
                   </Stack>
                 </RadioGroup>
               </div>

@@ -18,6 +18,7 @@ import { setDate } from "date-fns/esm";
 import useMedia from "../Hooks/useMedia";
 import calen from "../Assets/Calendarimg.jpg";
 import { getCalendar } from "../API/api";
+import CalendarSelector from "./CalendarSelector";
 const dateFns = require("date-fns");
 
 const Events = () => {
@@ -26,32 +27,33 @@ const Events = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [startDay, setStartDay] = useState("royal");
-  const [cali, setCalendar] = useState([]);
+  const [calendar, setCalendar] = useState([]);
 
   useEffect(() => {
     console.log("getting calendar")
     getCalendar().then((result) => {
       console.log(result.data) 
       setCalendar(result.data)
-      console.log("img"+cali.calendar_img)
+      console.log("img"+calendar.calendar_img)
       setLoading(false)
     })
 }, [])
   const mobile = useMedia(["(max-width: 450px)"], [true]);
   return !loading ? (
-    <div
-      style={{
-        height: vh,
-        display: "flex",
-        flexDirection: "column",
-        width: "100%",
-        overflow: "auto" // Add this line to make the container scrollable
-      }}
-    >
-      <div style={{ display: "flex", width: "100%", justifyContent: "center", marginBottom: "25vh",}}>
-        <img className="shadow" src={cali.calendar_img} />
-      </div>
-    </div>
+    // <div
+    //   style={{
+    //     height: vh,
+    //     display: "flex",
+    //     flexDirection: "column",
+    //     width: "100%",
+    //     overflow: "auto" // Add this line to make the container scrollable
+    //   }}
+    // >
+    //   <div style={{ display: "flex", width: "100%", justifyContent: "center", marginBottom: "25vh",}}>
+    //     <img className="shadow" src={calendar.calendar_img} />
+    //   </div>
+    // </div>
+    <CalendarSelector />
   ) : (
     <div
       style={{
