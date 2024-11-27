@@ -47,7 +47,7 @@ const CalendarSelector = () => {
                     {/* Dynamically generate tabs using _id as the tab name */}
                     {calendars.map((calendar) => (
                         <Tab key={calendar._id} _selected={{ color: "white", bg: "blue.500" }}>
-                            {calendar._id} {/* Tab label is the calendar's _id */}
+                            {calendar.name} {/* Tab label is the calendar's _id */}
                         </Tab>
                     ))}
                 </TabList>
@@ -56,7 +56,6 @@ const CalendarSelector = () => {
                     {/* Dynamically generate tab panels with corresponding imgUrl */}
                     {calendars.map((calendar) => (
                         <TabPanel key={calendar._id}>
-                            <Text fontSize="xl">Calendar: {calendar._id}</Text>
                             <Image 
                                 src={calendar.imgUrl} 
                                 alt={`Calendar ${calendar._id}`} 

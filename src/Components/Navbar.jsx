@@ -224,11 +224,6 @@ const Navbar = ({ fullView, setFullView }) => {
                   style={{ marginRight: "8px", color: "#1890ff" }}
                 ></TeamOutlined>
               </a>
-              <a target="_blank" href="https://www.instagram.com/hseapps/">
-                <InstagramOutlined
-                  style={{ marginRight: "8px", color: "#1890ff" }}
-                ></InstagramOutlined>
-              </a>
               <a target="_blank" href="https://github.com/HSE-Apps">
                 <GithubOutlined
                   style={{ marginRight: "8px", color: "#1890ff" }}
