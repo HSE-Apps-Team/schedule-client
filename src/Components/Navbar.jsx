@@ -178,7 +178,7 @@ const Navbar = ({ fullView, setFullView }) => {
                 ></Switch>
               </div>
 
-              <div style={{ marginTop: "3px", marginBottom: "20px" }}>
+              {/* <div style={{ marginTop: "3px", marginBottom: "20px" }}>
                 <Text strong style={{ fontSize: "10px", marginBottom: "10px" }}>
                   THEME
                 </Text>
@@ -194,7 +194,7 @@ const Navbar = ({ fullView, setFullView }) => {
                     <Radio className="radio" value="Winter">Winter</Radio>
                   </Stack>
                 </RadioGroup>
-              </div>
+              </div> */}
 
               {!mobile && (
                 <div style={{ marginTop: "3px", marginBottom: "20px" }}>
