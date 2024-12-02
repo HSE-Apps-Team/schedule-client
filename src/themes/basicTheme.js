@@ -1,4 +1,4 @@
-import { extendTheme, withDefaultColorScheme } from '@chakra-ui/react'
+import { border, extendTheme, withDefaultColorScheme } from '@chakra-ui/react'
 import { colors } from '@material-ui/core'
 import { blue } from '@material-ui/core/colors'
 import { bg } from 'date-fns/locale'
@@ -130,6 +130,11 @@ const basicTheme = extendTheme(
           },
           '.tick-flip-panel': {
             bg: 'bg-box',
+            color: 'fg',
+          },
+          '.css-1sjn39f, .css-193verl, .css-fgp5ep, .css-1sjn39f[aria-selected="true"], .css-193verl[aria-selected="true"]': { // tabs on calendar
+            border: 'none',
+            borderBottom: 'none',
             color: 'fg',
           }
         },
