@@ -15,7 +15,7 @@ import SpecialToast from "./Components/SpecialToast";
 import { Box, theme } from "@chakra-ui/react";
 import { th } from "date-fns/locale";
 
-const App = () => {
+const App = ( theme ) => {
   const settingsFromStorage = localStorage.getItem("scheduleSettings");
   if (!settingsFromStorage) {
     localStorage.setItem(

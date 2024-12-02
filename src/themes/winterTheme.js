@@ -1,4 +1,4 @@
-import { border, extendTheme, withDefaultColorScheme } from '@chakra-ui/react'
+import { extendTheme, withDefaultColorScheme } from '@chakra-ui/react'
 import { colors } from '@material-ui/core'
 import { blue } from '@material-ui/core/colors'
 import { bg } from 'date-fns/locale'
@@ -6,6 +6,31 @@ import { bg } from 'date-fns/locale'
 const basicTheme = extendTheme(
   withDefaultColorScheme({ colorScheme: 'blue', components: ['Switch'] }), // set colorScheme to accent color
   {
+    blue: {
+      '50': '',
+      '100': '#B3E5FC',
+      '200': '#81D4FA',
+      '300': '#4FC3F7',
+      '400': '#29B6F6',
+      '500': '#0288D1',
+      '600': '#0277BD',
+      '700': '#01579B',
+      '800': '#01428D',
+      '900': '#013A63',
+    },
+    gray : {
+      '50': 'red',
+      '100': '#F5F5F5',
+      '200': '#EEEEEE',
+      '300': '#E0E0E0',
+      '400': '#BDBDBD',
+      '500': '#9E9E9E',
+      '600': '#757575',
+      '700': '#616161',
+      '800': '#424242',
+      '900': '#212121',
+    },
+
     semanticTokens: {
       colors: {
         blue: { default: 'blue.500', _dark: 'blue.300' },
@@ -23,7 +48,7 @@ const basicTheme = extendTheme(
         'fg-subtle': { default: 'gray.500', _dark: 'gray.300' },
         'fg-on-accent': { default: 'white', _dark: 'inherit' },
         // background semantic tokens
-        bg: { default: 'gray.50', _dark: 'gray.900' },
+        bg: { default: 'yellow', _dark: 'gray.900' },
         'bg-subtle': { default: 'gray.100', _dark: 'gray.800' },
         'bg-muted': { default: 'gray.300', _dark: 'gray.700' },
         'bg-emphasis': { default: 'gray.400', _dark: 'gray.600' },
@@ -52,24 +77,10 @@ const basicTheme = extendTheme(
           '.component': {
             color: 'fg',
             bg: 'bg-box',
-            _hover: {
-              bg: 'bg-box',
-            }
           },
           '.selected': {
             color: 'fg',
             bg: 'bg-muted',
-            _hover: {
-              bg: 'bg-muted',
-            },
-            _focus: {
-              boxShadow: "none",
-              bg: 'bg-muted',
-            },
-            _active: {
-              boxShadow: "none",
-              bg: 'bg-muted',
-            },
           },
           '.current': {
             color: 'fg',
@@ -87,10 +98,7 @@ const basicTheme = extendTheme(
             fontStyle: 'normal !important',
           },
           '.shadow': {
-            boxShadow: "inset 0 1px hsla(0,0%,100%,.05), rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px",
-          },
-          '.shadow-no-highlight': {
-            boxShadow: "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px",
+              boxShadow: "inset 0 1px hsla(0,0%,100%,.05), rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px",
           },
           '.button': {
             bg: 'accent',
@@ -130,11 +138,6 @@ const basicTheme = extendTheme(
           },
           '.tick-flip-panel': {
             bg: 'bg-box',
-            color: 'fg',
-          },
-          '.css-1sjn39f, .css-193verl, .css-fgp5ep, .css-1sjn39f[aria-selected="true"], .css-193verl[aria-selected="true"]': { // tabs on calendar
-            border: 'none',
-            borderBottom: 'none',
             color: 'fg',
           }
         },
