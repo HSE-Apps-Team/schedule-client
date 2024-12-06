@@ -42,24 +42,50 @@ const CalendarSelector = () => {
     }, [calendars]);
 
     return (
-        <Box width={ mobile ? "90%" : "50%" } margin={"auto"} overflowY={"scroll"} height={"85vh"} 
+        <Box width={ mobile ? "90%" : "50%" } margin={"auto"} overflowY={"scroll"} height={"85vh"}
         sx={{
+            msOverflowStyle: 'none',
+            scrollbarWidth: 'none',
+            mozScrollbarWidth: 'none',
             '&::-webkit-scrollbar': { // Hide scrollbar on WebKit-based browsers
               display: 'none'
             }
         }}>
             <Tabs 
                 isLazy 
-                variant="enclosed" 
+                variant="unstyled" 
                 index={selectedCalendarIndex}
                 onChange={(index) => setSelectedCalendarIndex(index)} // Update active tab when a tab is clicked
+
             >
                 <TabList>
                     {/* Dynamically generate tabs using _id as the tab name */}
                     {calendars.map((calendar, index) => (
-                        <Tab key={calendar._id} className={selectedCalendarIndex === index ? "component selected" : "component"} borderColor={"none"}>
-                            {calendar.name} {/* Tab label is the calendar's _id */}
-                        </Tab>
+                        <>
+                            <Tab
+                                key={calendar._id}
+                                className={selectedCalendarIndex === index ? "component selected" : "component"}
+                                borderColor={"none"}
+                                borderRadius={"10px 10px 0 0"}
+                                sx={{ // I have absolutely no clue how pseudo elements work
+                                      // but this adds extra background below the tabs
+                                      // the top right of the border radius is able to fill in when the tabs extend all the way
+                                    position: 'relative',
+                                    '&::after': {
+                                        content: '""',
+                                        display: 'block',
+                                        height: '10px',
+                                        backgroundColor: selectedCalendarIndex === index ? 'bg-muted' : 'bg-box',
+                                        position: 'absolute',
+                                        bottom: '-10px',
+                                        left: 0,
+                                        width: '100%',
+                                    }
+                                }}
+                            >
+                                {calendar.name} {/* Tab label is the calendar's _id */}
+                            </Tab>
+                        </>
                     ))}
                 </TabList>
 
@@ -71,7 +97,7 @@ const CalendarSelector = () => {
                                 src={calendar.imgUrl} 
                                 alt={`Calendar ${calendar._id}`} 
                                 width="100%" 
-                                borderRadius="10px 10px 0 0"
+                                borderRadius="10px 10px 10px 10px"
                             />
                         </TabPanel>
                     ))}
