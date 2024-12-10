@@ -399,15 +399,11 @@ const Clock = ({ fullView, setFullView }) => {
           textAlign: "center",
           color: "white",
           position: "absolute",
-          top: "50%",
-          left: "50%",
           zIndex: 2,
-          transform: "translate(-50%, -50%)",
         }}
       >
         <h1
           style={{
-            // color: "white",
             fontSize: mobile ? "24px" : "32px",
             margin: "10px 0px",
             fontWeight: 400,

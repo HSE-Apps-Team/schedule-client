@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import Snowfall from "react-snowfall";
+
 import BottomNav from "./Components/BottomNav";
 import Clock from "./Components/Clock";
 import Events from "./Components/Events";
@@ -58,9 +60,10 @@ const App = ( theme ) => {
         <Navbar fullView={fullView} setFullView={setFullView} />
         <Announcements />
 
-        <Box h={"100%"} >
+
+        <Box h={"100%"} position={"relative"}>
           {view == "clock" && (
-            <Clock fullView={fullView} setFullView={setFullView} />
+            <Clock fullView={fullView} setFullView={setFullView}/>
           )}
           {view == "schedule" && <Schedule />}
           {view == "news" && <News />}
