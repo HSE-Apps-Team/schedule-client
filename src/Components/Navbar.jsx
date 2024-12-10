@@ -38,6 +38,8 @@ import { ChatIcon } from "@chakra-ui/icons";
 import logo from "../Assets/hseapps.png";
 import useMedia from "../Hooks/useMedia";
 import { ThemeContext } from "../Contexts/ThemeContext";
+import { hi } from "date-fns/locale";
+import { set } from "date-fns";
 
 const Navbar = ({ fullView, setFullView }) => {
   const mobile = useMedia(
@@ -47,11 +49,14 @@ const Navbar = ({ fullView, setFullView }) => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
-  const { theme, setThemeSettings } = useContext(ThemeContext);
+  const { theme, setThemeSettings, snowSettings } = useContext(ThemeContext);
 
   const [settings, setSettings] = useState(
     JSON.parse(localStorage.getItem("scheduleSettings"))
   );
+  console.log(`snowSettings: ${snowSettings}`);
+  const [snow, setSnow] = useState(JSON.parse(localStorage.getItem("scheduleSettings"))["snow"] !== undefined ? JSON.parse(localStorage.getItem("scheduleSettings"))["snow"] : snowSettings !== undefined ? snowSettings : true);
+
   const [settingsPending, setSettingsPending] = useState(settings);
 
   const handleSave = () => {
@@ -61,6 +66,15 @@ const Navbar = ({ fullView, setFullView }) => {
     onClose();
     setSettingsPending(settings);
   };
+
+  const handleSnow = () => {
+    console.log(`Snow before change: ${snow}`)
+    setSnow(!snow);
+    console.log(`Snow after change: ${snow}`)
+    console.log(`settingsPending before change ${settingsPending}`)
+    setSettingsPending({ ...settingsPending, snow: !snow });
+    console.log(`settingsPending after change ${settingsPending}`)
+  }
 
   const toggleFullView = () => {
     if (fullView) {
@@ -168,12 +182,25 @@ const Navbar = ({ fullView, setFullView }) => {
 
               <div style={{ marginTop: "3px", marginBottom: "20px" }}>
                 <Text strong style={{ fontSize: "10px", marginBottom: "10px" }}>
+                  SNOW{" "}
+                </Text>
+
+                <Switch
+                  isChecked={snow}
+                  onChange={handleSnow}
+                  size="lg"
+                ></Switch>
+              </div>
+
+              <div style={{ marginTop: "3px", marginBottom: "20px" }}>
+                <Text strong style={{ fontSize: "10px", marginBottom: "10px" }}>
                   DARK MODE{" "}
                 </Text>
 
                 <Switch
                   isChecked={colorMode == "dark" ? true : false}
                   onChange={toggleColorMode}
+
                   size="lg"
                 ></Switch>
               </div>
