@@ -54,8 +54,7 @@ const Navbar = ({ fullView, setFullView }) => {
   const [settings, setSettings] = useState(
     JSON.parse(localStorage.getItem("scheduleSettings"))
   );
-  console.log(`snowSettings: ${snowSettings}`);
-  const [snow, setSnow] = useState(JSON.parse(localStorage.getItem("scheduleSettings"))["snow"] !== undefined ? JSON.parse(localStorage.getItem("scheduleSettings"))["snow"] : snowSettings !== undefined ? snowSettings : true);
+  const [snow, setSnow] = useState(JSON.parse(localStorage.getItem("scheduleSettings"))["snow"] !== undefined ? JSON.parse(localStorage.getItem("scheduleSettings"))["snow"] : snowSettings !== undefined ? snowSettings : false);
 
   const [settingsPending, setSettingsPending] = useState(settings);
 
@@ -68,12 +67,8 @@ const Navbar = ({ fullView, setFullView }) => {
   };
 
   const handleSnow = () => {
-    console.log(`Snow before change: ${snow}`)
     setSnow(!snow);
-    console.log(`Snow after change: ${snow}`)
-    console.log(`settingsPending before change ${settingsPending}`)
     setSettingsPending({ ...settingsPending, snow: !snow });
-    console.log(`settingsPending after change ${settingsPending}`)
   }
 
   const toggleFullView = () => {
